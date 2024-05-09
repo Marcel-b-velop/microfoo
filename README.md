@@ -1,0 +1,2 @@
+# microfoo
+Microfrontend Example

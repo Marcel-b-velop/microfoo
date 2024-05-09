@@ -11,9 +11,6 @@ importers:
       core-js:
         specifier: ^3.8.3
         version: 3.37.0
-      single-spa:
-        specifier: ^6.0.1
-        version: 6.0.1
       single-spa-vue:
         specifier: ^2.1.0
         version: 2.5.1
@@ -66,9 +63,6 @@ importers:
       sass-loader:
         specifier: ^12.0.0
         version: 12.6.0(sass@1.77.0)(webpack@5.91.0)
-      systemjs-webpack-interop:
-        specifier: ^2.3.7
-        version: 2.3.7(webpack@5.91.0)
       typescript:
         specifier: ~4.5.5
         version: 4.5.5
@@ -3782,9 +3776,6 @@ packages:
 
   single-spa-vue@2.5.1:
     resolution: {integrity: sha512-Vw0xPs7F9vJd7ZN9gSvkipYfStAOUmke2oeheecK6hpBhLhDCx9uU2GcXC/pL6KuLDom+pZOAZxTg6UdI7Toew==}
-
-  single-spa@6.0.1:
-    resolution: {integrity: sha512-JsJSnjaeBJ+uZCqKwfI06AsaHlqfr2jvDqz+1we8tDxptYnDEi54C2M6W0XY2FLroro9Wnh3+ooEUEwcOileGg==}
 
   sirv@2.0.4:
     resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==}
@@ -8579,8 +8570,6 @@ snapshots:
   signal-exit@3.0.7: {}
 
   single-spa-vue@2.5.1: {}
-
-  single-spa@6.0.1: {}
 
   sirv@2.0.4:
     dependencies:

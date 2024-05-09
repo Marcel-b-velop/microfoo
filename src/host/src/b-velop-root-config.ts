@@ -1,20 +1,24 @@
 import { registerApplication, start, LifeCycles } from "single-spa";
 
 registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import<LifeCycles>(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
+  name: "@b-velop/frame",
+  app: () => System.import<LifeCycles>("@b-velop/frame"),
   activeWhen: ["/"],
 });
 
-// registerApplication({
-//   name: "@b-velop/navbar",
-//   app: () => System.import("@b-velop/navbar"),
-//   activeWhen: ["/"]
-// });
-
 start({
   urlRerouteOnly: true,
+});
+
+registerApplication({
+  name: "@b-velop/app1",
+  app: () => System.import<LifeCycles>("@b-velop/app1"),
+  activeWhen: (location: Location) =>
+    location.pathname.startsWith("/app1") || location.pathname === "/",
+});
+
+registerApplication({
+  name: "@b-velop/app2",
+  app: () => System.import<LifeCycles>("@b-velop/app2"),
+  activeWhen: (location: Location) => location.pathname.startsWith("/app2"),
 });

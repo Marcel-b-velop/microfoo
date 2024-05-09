@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld msg="Header"/>
+  <HelloWorld msg="Welcome to App1"/>
 </template>
 
 <script lang="ts">
@@ -14,7 +14,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

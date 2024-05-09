@@ -24,5 +24,6 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
     ],
+    externals: ["single-spa"],
   });
 };

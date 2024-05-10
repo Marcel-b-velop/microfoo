@@ -24,6 +24,6 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
     ],
-    externals: ["single-spa"],
+    externals: ["single-spa", "pinia", "vue"],
   });
-};
+}

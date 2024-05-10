@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "In", "In", "{5907BF37-B70A-46F2-BC32-BB519D7C747E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Out", "Out", "{9FBBE599-E5F8-417B-9179-4169708FCF5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Api", "Host.Api\Host.Api.csproj", "{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E661594-9C99-4BB3-85A5-DC0FC79E250B}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2} = {5907BF37-B70A-46F2-BC32-BB519D7C747E}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0715AA1C-EA73-45C5-98C0-DBAC0AE7F2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

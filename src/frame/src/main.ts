@@ -2,12 +2,25 @@ import { h, createApp } from 'vue'
 import singleSpaVue from 'single-spa-vue'
 
 import App from './App.vue'
+import { createPinia } from 'pinia'
 
 const vueLifecycles = singleSpaVue({
   createApp,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  payload: {
+    store: undefined
+  },
   appOptions: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     render () {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       return h(App, {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        store: this.payload.store
         // single-spa props are available on the "this" object. Forward them to your component as needed.
         // https://single-spa.js.org/docs/building-applications#lifecycle-props
         // if you uncomment these, remember to add matching prop definitions for them in your App.vue file.
@@ -18,7 +31,13 @@ const vueLifecycles = singleSpaVue({
         */
       })
     }
-  }
+  },
+  handleInstance (app) {
+    const pinia = createPinia()
+    app.use(pinia)
+    console.info('Pinia store created')
+  },
+  replaceMode: false
 })
 
 export const bootstrap = vueLifecycles.bootstrap

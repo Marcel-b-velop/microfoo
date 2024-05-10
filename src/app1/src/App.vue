@@ -1,26 +1,33 @@
 <template>
   <HelloWorld msg="Welcome to App1"/>
+  <label>{{ letNavigate }}</label>
+  <button @click="letNavigate = !letNavigate">Toggle Navigation</button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { State, Store } from 'infra'
 import HelloWorld from './components/HelloWorld.vue'
+import { onMounted, ref, defineProps } from 'vue'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const props = defineProps<{ store: Store }>()
+const letNavigate = ref(false)
+
+const shouldNavigate = (sender: string) => {
+  console.info(sender)
+  return letNavigate.value
+}
+
+onMounted(() => {
+  console.info('mounted')
+  const st = props.store
+  st.subscribe({
+    next: (data: State) => {
+      console.info('data', data)
+    }
+  })
+  st.next({ message: 'Hello from Vue', shouldNavigate, token: '1234' })
 })
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

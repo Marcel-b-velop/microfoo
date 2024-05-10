@@ -1,26 +1,33 @@
 <template>
-  <HelloWorld msg="Header"/>
+  <HelloWorld :msg="msg" :store="props.store"/>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import { defineProps, onMounted, ref } from 'vue'
+import { Store, State } from 'infra'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const letNavigate = ref(false)
+const props = defineProps<{ store: Store }>()
+const msg = ref('Welcome to Your Vue.js + TypeScript App')
+
+const shouldNavigate = (sender: string) => {
+  console.info(sender)
+  return letNavigate.value
+}
+
+onMounted(() => {
+  console.info('mounted')
+  const st = props.store
+  st.subscribe({
+    next: (data: State) => {
+      console.info('data', data)
+      msg.value = data.message
+    }
+  })
+  st.next({ message: 'Hello from Vue', shouldNavigate, token: '1234' })
 })
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

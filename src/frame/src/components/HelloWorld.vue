@@ -1,17 +1,17 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ props.msg }}</h1>
   </div>
   <div class="container">
     <div class="sidebar">
-        <ul>
-          <li>
-            <a href="#" @click="navigate('/app1')">App1</a>
-          </li>
-          <li>
-            <a href="#" @click="navigate('/app2')">App2</a>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <a href="#" @click="navigate('/app1')">App1</a>
+        </li>
+        <li>
+          <a href="#" @click="navigate('/app2')">App2</a>
+        </li>
+      </ul>
     </div>
     <div class="content">
       <div id="single-spa-application:@b-velop/app1"></div>
@@ -21,11 +21,11 @@
 </template>
 
 <script setup lang="ts">
-import * as spa from 'single-spa'
-import { defineProps } from 'vue'
+import * as spa from "single-spa";
+import { Store } from "infra";
+import { defineProps } from "vue";
 
-defineProps(['msg'])
-const navigate = (path: string) => spa.navigateToUrl(path)
+const props = defineProps<{ msg: string, store: Store }>();
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -35,6 +35,7 @@ const navigate = (path: string) => spa.navigateToUrl(path)
   justify-content: center;
   background-color: #f0f0f0;
   font-size: 2em;
+  font-family: Helvetica, sans-serif;
 }
 
 .container {

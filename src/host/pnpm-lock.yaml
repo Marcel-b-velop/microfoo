@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       '@types/jest':
-        specifier: ^27.0.1
+        specifier: ^27.5.2
         version: 27.5.2
       '@types/systemjs':
-        specifier: ^6.1.1
+        specifier: ^6.13.5
         version: 6.13.5
       '@types/webpack-env':
-        specifier: ^1.16.2
+        specifier: ^1.18.5
         version: 1.18.5
       infra:
         specifier: file:../infra
@@ -24,29 +24,29 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1
       single-spa:
-        specifier: ^5.9.3
+        specifier: ^5.9.5
         version: 5.9.5
     devDependencies:
       '@babel/core':
-        specifier: ^7.23.3
+        specifier: ^7.24.5
         version: 7.24.5
       '@babel/eslint-parser':
-        specifier: ^7.23.3
+        specifier: ^7.24.5
         version: 7.24.5(@babel/core@7.24.5)(eslint@7.32.0)
       '@babel/plugin-transform-runtime':
-        specifier: ^7.23.3
+        specifier: ^7.24.3
         version: 7.24.3(@babel/core@7.24.5)
       '@babel/preset-env':
-        specifier: ^7.23.3
+        specifier: ^7.24.5
         version: 7.24.5(@babel/core@7.24.5)
       '@babel/preset-typescript':
-        specifier: ^7.23.3
+        specifier: ^7.24.1
         version: 7.24.1(@babel/core@7.24.5)
       '@babel/runtime':
-        specifier: ^7.23.3
+        specifier: ^7.24.5
         version: 7.24.5
       concurrently:
-        specifier: ^6.2.1
+        specifier: ^6.5.1
         version: 6.5.1
       cross-env:
         specifier: ^7.0.3
@@ -55,7 +55,7 @@ importers:
         specifier: ^7.32.0
         version: 7.32.0
       eslint-config-prettier:
-        specifier: ^8.3.0
+        specifier: ^8.10.0
         version: 8.10.0(eslint@7.32.0)
       eslint-config-ts-important-stuff:
         specifier: ^1.1.0
@@ -64,7 +64,7 @@ importers:
         specifier: ^3.4.1
         version: 3.4.1(eslint-config-prettier@8.10.0(eslint@7.32.0))(eslint@7.32.0)(prettier@2.8.8)
       html-webpack-plugin:
-        specifier: ^5.3.2
+        specifier: ^5.6.0
         version: 5.6.0(webpack@5.91.0(webpack-cli@4.10.0))
       jest:
         specifier: ^27.5.1
@@ -73,34 +73,34 @@ importers:
         specifier: ^27.5.1
         version: 27.5.1
       prettier:
-        specifier: ^2.3.2
+        specifier: ^2.8.8
         version: 2.8.8
       pretty-quick:
-        specifier: ^3.1.1
+        specifier: ^3.3.1
         version: 3.3.1(prettier@2.8.8)
       serve:
-        specifier: ^13.0.0
+        specifier: ^13.0.4
         version: 13.0.4
       ts-config-single-spa:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ^4.3.5
+        specifier: ^4.9.5
         version: 4.9.5
       webpack:
-        specifier: ^5.89.0
+        specifier: ^5.91.0
         version: 5.91.0(webpack-cli@4.10.0)
       webpack-cli:
         specifier: ^4.10.0
         version: 4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0)
       webpack-config-single-spa-ts:
-        specifier: ^4.0.0
+        specifier: ^4.1.4
         version: 4.1.4(@babel/core@7.24.5)(typescript@4.9.5)(webpack@5.91.0(webpack-cli@4.10.0))
       webpack-dev-server:
-        specifier: ^4.0.0
+        specifier: ^4.15.2
         version: 4.15.2(webpack-cli@4.10.0)(webpack@5.91.0)
       webpack-merge:
-        specifier: ^5.8.0
+        specifier: ^5.10.0
         version: 5.10.0
 
 packages:
@@ -1610,8 +1610,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.4.761:
-    resolution: {integrity: sha512-PIbxpiJGx6Bb8dQaonNc6CGTRlVntdLg/2nMa1YhnrwYOORY9a3ZgGN0UQYE6lAcj/lkyduJN7BPt/JiY+jAQQ==}
+  electron-to-chromium@1.4.762:
+    resolution: {integrity: sha512-rrFvGweLxPwwSwJOjIopy3Vr+J3cIPtZzuc74bmlvmBIgQO3VYJDvVrlj94iKZ3ukXUH64Ex31hSfRTLqvjYJQ==}
 
   emittery@0.8.1:
     resolution: {integrity: sha512-uDfvUjVrfGJJhymx/kz6prltenw1u7WrCg1oa94zYY8xxVpLLUu045LAT0dhDZdXG58/EpPL/5kA180fQ/qudg==}
@@ -2978,8 +2978,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.1:
-    resolution: {integrity: sha512-f/vbBsu+fOiYt+lmwZV0rVwJScl46HppnOA1ZvIuBWKOTlllpyJ3bfVax76/OrhCH38dyxoDIA8K7uB963IYgA==}
+  semver@7.6.2:
+    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5055,7 +5055,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001617
-      electron-to-chromium: 1.4.761
+      electron-to-chromium: 1.4.762
       node-releases: 2.0.14
       update-browserslist-db: 1.0.15(browserslist@4.23.0)
 
@@ -5281,7 +5281,7 @@ snapshots:
       postcss-modules-scope: 3.2.0(postcss@8.4.38)
       postcss-modules-values: 4.0.0(postcss@8.4.38)
       postcss-value-parser: 4.2.0
-      semver: 7.6.1
+      semver: 7.6.2
     optionalDependencies:
       webpack: 5.91.0(webpack-cli@4.10.0)
 
@@ -5404,7 +5404,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.4.761: {}
+  electron-to-chromium@1.4.762: {}
 
   emittery@0.8.1: {}
 
@@ -5529,7 +5529,7 @@ snapshots:
       optionator: 0.9.4
       progress: 2.0.3
       regexpp: 3.2.0
-      semver: 7.6.1
+      semver: 7.6.2
       strip-ansi: 6.0.1
       strip-json-comments: 3.1.1
       table: 6.8.2
@@ -5722,7 +5722,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.6.1
+      semver: 7.6.2
       tapable: 2.2.1
       typescript: 4.9.5
       webpack: 5.91.0(webpack-cli@4.10.0)
@@ -6360,7 +6360,7 @@ snapshots:
       jest-util: 27.5.1
       natural-compare: 1.4.0
       pretty-format: 27.5.1
-      semver: 7.6.1
+      semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
 
@@ -6529,7 +6529,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.1
+      semver: 7.6.2
 
   makeerror@1.0.12:
     dependencies:
@@ -7006,7 +7006,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.6.1: {}
+  semver@7.6.2: {}
 
   send@0.18.0:
     dependencies:

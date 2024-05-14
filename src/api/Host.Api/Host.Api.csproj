@@ -12,7 +12,13 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
-
+    <ItemGroup>
+        <PackageReference Include="IdentityModel" Version="6.2.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0"/>
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Host.Register.Adapter\Host.Register.Adapter\Host.Register.Adapter.csproj" />
     </ItemGroup>

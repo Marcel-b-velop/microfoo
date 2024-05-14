@@ -13,4 +13,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Host.Register.Adapter\Host.Register.Adapter\Host.Register.Adapter.csproj" />
+    </ItemGroup>
+
 </Project>

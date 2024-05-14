@@ -101,7 +101,7 @@ public class MqttWorker : BackgroundService
             }
             catch (Exception e)
             {
-                _logger.LogError("Fehler beim Starten des Workers", e);
+                _logger.LogError($"Fehler beim Starten des Workers. {e.StackTrace}", e);
                 await Task.Delay(3_000, stoppingToken);
             }
 

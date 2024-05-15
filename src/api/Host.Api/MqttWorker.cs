@@ -1,5 +1,10 @@
+using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
 using Host.Api.Config;
+using Host.Application;
+using Host.Application.Commands;
+using Host.Application.Handler;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
@@ -81,9 +86,17 @@ public class MqttWorker : BackgroundService
 
                 _client.ApplicationMessageReceivedAsync += async e =>
                 {
+                    using var scope = _serviceProvider.CreateScope();
+                    var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<ProcessMessageCommand>>();
                     Console.WriteLine("Received application message.");
                     var payload = Encoding.Default.GetString(e.ApplicationMessage.PayloadSegment);
                     var address = e.ApplicationMessage.Topic;
+                    var cmd = new ProcessMessageCommand
+                    {
+                        Payload = payload,
+                        Topic = address
+                    };
+                    await handler.Handle(cmd);
                     Console.WriteLine("Topic: " + address);
                     Console.WriteLine("Value: " + payload);
                     // var command = new CreateMeasurementCommand(address, payload);

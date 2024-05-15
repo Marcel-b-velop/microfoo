@@ -1,3 +1,5 @@
+using Host.Application;
+using Host.Register.Adapter;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Api.Controller;
@@ -7,12 +9,20 @@ namespace Host.Api.Controller;
 public class HostController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetGello(CancellationToken cancellationToken)
+    public async Task<IActionResult> GetApplication(
+        ICacheService service,
+        CancellationToken cancellationToken)
     {
-        var result = new
-        {
-            Hello = "World"
-        };
+        var result = service.GetFromCache<Dictionary<string, Domain.Models.Application>>("App");
+        return await Task<IActionResult>.FromResult(Ok(result));
+    }
+
+    [HttpGet("map")]
+    public async Task<IActionResult> GetMap(
+        ICacheService service,
+        CancellationToken cancellationToken)
+    {
+        var result = service.GetFromCache<Domain.Models.Application>("App");
         return await Task<IActionResult>.FromResult(Ok(result));
     }
 }

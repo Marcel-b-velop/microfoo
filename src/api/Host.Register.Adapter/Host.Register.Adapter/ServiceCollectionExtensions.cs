@@ -6,7 +6,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddRegisterAdapter(this IServiceCollection services)
     {
-        services.AddScoped<RegisterAdapter>();
+        services.AddSingleton<ICacheService, CacheService>();
+        services.AddScoped<IRegisterApplication, RegisterApplication>();
         return services;
     }
 }

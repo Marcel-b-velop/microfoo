@@ -5,22 +5,25 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>a85656e3-9d9d-4274-ad22-753019f1f20b</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="IdentityModel" Version="6.2.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3"/>
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="8.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Host.Register.Adapter\Host.Register.Adapter\Host.Register.Adapter.csproj" />
+        <ProjectReference Include="..\Host.Application\Host.Application.csproj"/>
+        <ProjectReference Include="..\Host.Domain\Host.Domain.csproj" />
     </ItemGroup>
 
 </Project>

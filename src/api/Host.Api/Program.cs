@@ -1,5 +1,6 @@
 using Host.Api;
 using Host.Api.Authorization;
+using Host.Application;
 using Host.Register.Adapter;
 using Microsoft.OpenApi.Models;
 
@@ -18,11 +19,12 @@ var builder = WebApplication.CreateBuilder(optionos);
 var authorizationSettings = AuthorizationSettings.Read(builder.Configuration);
 
 builder.Services.AddControllers();
+builder.Services.AddHostApplication();
 builder.Services.AddEndpointsApiExplorer()
     .AddSwaggerGen(option => option
         .AddSecurity(authorizationSectionName, builder.Configuration)
         .SwaggerDoc("v1", new OpenApiInfo { Title = "Host", Version = "v1" }));
-
+builder.Services.AddMemoryCache();
 
 builder.Services
     .AddAuthorization(opts =>

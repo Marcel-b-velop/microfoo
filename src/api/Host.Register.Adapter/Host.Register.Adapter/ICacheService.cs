@@ -1,4 +1,4 @@
-namespace Host.Register.Adapter;
+namespace com.b_velop.microfe;
 
 public interface ICacheService
 {

@@ -1,8 +1,7 @@
-using Host.Application;
-using Host.Register.Adapter;
+using com.b_velop.microfe.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Host.Api.Controller;
+namespace com.b_velop.microfe.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -13,7 +12,7 @@ public class HostController : ControllerBase
         ICacheService service,
         CancellationToken cancellationToken)
     {
-        var result = service.GetFromCache<Dictionary<string, Domain.Models.Application>>("App");
+        var result = service.GetFromCache<Dictionary<string, Application>>("App");
         return await Task<IActionResult>.FromResult(Ok(result));
     }
 
@@ -22,7 +21,7 @@ public class HostController : ControllerBase
         ICacheService service,
         CancellationToken cancellationToken)
     {
-        var result = service.GetFromCache<Domain.Models.Application>("App");
+        var result = service.GetFromCache<Application>("App");
         return await Task<IActionResult>.FromResult(Ok(result));
     }
 }

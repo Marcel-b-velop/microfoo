@@ -1,4 +1,4 @@
-namespace com.b_velop.microfe.Models;
+﻿namespace com.b_velop.microfe.connect.Models;
 
 public record Application
 {
@@ -8,4 +8,7 @@ public record Application
     public int? Port { get; init; }
     public string? ApplicationRoot { get; init; }
     public string? AppIcon { get; init; }
+    public string? AppIconColor { get; init; }
+    public Dictionary<string, string> Props { get; init; } = new();
+    public Dictionary<string, bool> Flags { get; init; } = new();
 }

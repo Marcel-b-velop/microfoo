@@ -1,4 +1,4 @@
-namespace Host.Api.Authorization
+namespace com.b_velop.microfe.Authorization
 {
     public static class Scopes
     {

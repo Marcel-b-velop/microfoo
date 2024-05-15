@@ -1,8 +1,8 @@
 using System.Text.Json;
-using Host.Application.Commands;
-using Host.Register.Adapter;
+using com.b_velop.microfe.Commands;
+using com.b_velop.microfe.Models;
 
-namespace Host.Application.Handler;
+namespace com.b_velop.microfe.Handler;
 
 public class ProcessMessageCommandHandler : ICommandHandler<ProcessMessageCommand>
 {
@@ -18,7 +18,7 @@ public class ProcessMessageCommandHandler : ICommandHandler<ProcessMessageComman
         return command.Topic switch
         {
             "apphost/connect/application" => _registerApplication.Register(
-                JsonSerializer.Deserialize<Domain.Models.Application>(command.Payload)),
+                JsonSerializer.Deserialize<Application>(command.Payload)),
             _ => throw new InvalidOperationException("Invalid topic.")
         };
     }

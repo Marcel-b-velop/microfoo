@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Host.Register.Adapter;
+namespace com.b_velop.microfe;
 
 public static class ServiceCollectionExtensions
 {

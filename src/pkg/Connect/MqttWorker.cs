@@ -1,12 +1,16 @@
 using System.Text;
-using com.b_velop.microfe.Commands;
-using com.b_velop.microfe.Handler;
+using System.Text.Json;
+using com.b_velop.microfe.connect.Models;
 using com.b_velop.microfe.shared.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
 
-namespace com.b_velop.microfe;
+namespace com.b_velop.microfe.connect;
 
 public class MqttWorker : BackgroundService
 {
@@ -35,6 +39,19 @@ public class MqttWorker : BackgroundService
         await base.StopAsync(stoppingToken);
     }
 
+    private async Task ApplyConnectAsync(IConfiguration configuration)
+    {
+        var application = GetApplication(configuration);
+        var message = new MqttApplicationMessageBuilder()
+            .WithTopic(ApplicationTopic.Connect)
+            .WithPayload(JsonSerializer.Serialize(application))
+            .WithRetainFlag()
+            .Build();
+        await _client.EnqueueAsync(message);
+        // Wait until the queue is fully processed.
+        SpinWait.SpinUntil(() => _client.PendingApplicationMessagesCount == 0, 10_000);
+    }
+
     protected override async Task ExecuteAsync(
         CancellationToken stoppingToken)
     {
@@ -48,22 +65,22 @@ public class MqttWorker : BackgroundService
                 var scope = _serviceProvider.CreateScope();
                 // var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<CreateMeasurementCommand>>();
                 var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-                var application = GetApplication(configuration);
-                _subscriptions = application?.Subscriptions ??
+                var applicationConfig = GetApplicationConfig(configuration);
+                _subscriptions = applicationConfig?.Subscriptions ??
                                  throw new InvalidOperationException("No subscriptions found.");
                 var mqttFactory = new MqttFactory();
                 _client = mqttFactory.CreateManagedMqttClient();
-                _logger.LogInformation($"MQTT Server: {application.Server}");
-                _logger.LogInformation($"MQTT Client ID: {application.ClientId}");
+                _logger.LogInformation($"MQTT Server: {applicationConfig.Server}");
+                _logger.LogInformation($"MQTT Client ID: {applicationConfig.ClientId}");
                 var clientOptions = new MqttClientOptions
                 {
-                    ClientId = application.ClientId,
-                    Credentials = new MqttClientCredentials(application.UserName,
-                        Encoding.ASCII.GetBytes(application.Password)),
+                    ClientId = applicationConfig.ClientId,
+                    Credentials = new MqttClientCredentials(applicationConfig.UserName,
+                        Encoding.ASCII.GetBytes(applicationConfig.Password)),
                     ChannelOptions = new MqttClientTcpOptions
                     {
-                        Server = application.Server,
-                        Port = int.Parse(application.Port),
+                        Server = applicationConfig.Server,
+                        Port = int.Parse(applicationConfig.Port),
                         TlsOptions = new MqttClientTlsOptions
                         {
                             UseTls = true,
@@ -83,27 +100,17 @@ public class MqttWorker : BackgroundService
 
                 _client.ApplicationMessageReceivedAsync += async e =>
                 {
-                    using var scope = _serviceProvider.CreateScope();
-                    var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<ProcessMessageCommand>>();
-                    Console.WriteLine("Received application message.");
                     var payload = Encoding.Default.GetString(e.ApplicationMessage.PayloadSegment);
                     var address = e.ApplicationMessage.Topic;
-                    var cmd = new ProcessMessageCommand
+                    if (address.Equals(ApplicationTopic.CallForApplications))
                     {
-                        Payload = payload,
-                        Topic = address
-                    };
-                    await handler.Handle(cmd);
-                    Console.WriteLine("Topic: " + address);
-                    Console.WriteLine("Value: " + payload);
-                    // var command = new CreateMeasurementCommand(address, payload);
-                    // await handler.HandleAsync(command, stoppingToken);
+                        await ApplyConnectAsync(configuration);
+                    }
                 };
 
                 _logger.LogInformation("The managed MQTT client is connected.");
 
-                // Wait until the queue is fully processed.
-                SpinWait.SpinUntil(() => _client.PendingApplicationMessagesCount == 0, 10_000);
+                await ApplyConnectAsync(configuration);
                 _logger.LogInformation("Client connected: {S}", _client.IsConnected.ToString());
                 _logger.LogInformation("Pending messages: {ClientPendingApplicationMessagesCount}",
                     _client.PendingApplicationMessagesCount);
@@ -119,14 +126,31 @@ public class MqttWorker : BackgroundService
         } while (log);
     }
 
-    private ApplicationConfig? GetApplication(
+    private ApplicationConfig? GetApplicationConfig(
+        IConfiguration configuration)
+    {
+        try
+        {
+            var application = configuration
+                .GetSection("ApplicationConfig")
+                .Get<ApplicationConfig>();
+            return application;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error getting ApplicationConfig Settings", e.StackTrace);
+            throw;
+        }
+    }
+
+    private Application? GetApplication(
         IConfiguration configuration)
     {
         try
         {
             var application = configuration
                 .GetSection("Application")
-                .Get<ApplicationConfig>();
+                .Get<Application>();
             return application;
         }
         catch (Exception e)

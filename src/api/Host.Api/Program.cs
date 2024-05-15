@@ -1,7 +1,5 @@
-using Host.Api;
-using Host.Api.Authorization;
-using Host.Application;
-using Host.Register.Adapter;
+using com.b_velop.microfe;
+using com.b_velop.microfe.Authorization;
 using Microsoft.OpenApi.Models;
 
 const string serviceName = "Host";

@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Host.Api.Authorization;
+namespace com.b_velop.microfe.Authorization;
 
 internal static class SwaggerGenOptionsExtensions
 {

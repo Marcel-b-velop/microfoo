@@ -1,4 +1,4 @@
-namespace Host.Application.Handler;
+namespace com.b_velop.microfe.Handler;
 
 public interface ICommandHandler<T>
 {

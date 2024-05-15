@@ -1,8 +1,8 @@
-﻿using Host.Application.Commands;
-using Host.Application.Handler;
+﻿using com.b_velop.microfe.Commands;
+using com.b_velop.microfe.Handler;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Host.Application;
+namespace com.b_velop.microfe;
 
 public static class ServiceCollectionExtensions
 {

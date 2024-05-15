@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Host.Register.Adapter;
+namespace com.b_velop.microfe;
 
 public class CacheService : ICacheService
 {

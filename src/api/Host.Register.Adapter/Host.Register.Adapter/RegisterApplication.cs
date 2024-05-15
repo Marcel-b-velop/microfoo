@@ -1,6 +1,6 @@
-using Host.Domain.Models;
+using com.b_velop.microfe.Models;
 
-namespace Host.Register.Adapter;
+namespace com.b_velop.microfe;
 
 public class RegisterApplication : IRegisterApplication
 {

@@ -1,4 +1,4 @@
-namespace Host.Application.Commands;
+namespace com.b_velop.microfe.Commands;
 
 public record ProcessMessageCommand
 {

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect", "..\pkg\Connect\Connect.csproj", "{413A4206-9FB6-4600-9CBF-B9BD97CF5204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "In", "In", "{C59D752C-AD9C-4DBF-BDBF-8211A39066D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App1.Bff", "App1.Bff\App1.Bff.csproj", "{EBAC7FD0-B470-4EEC-A117-711AF0ABC517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E29AEB41-AAFB-4CE8-B3A5-13C4DF1A3756}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{413A4206-9FB6-4600-9CBF-B9BD97CF5204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413A4206-9FB6-4600-9CBF-B9BD97CF5204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413A4206-9FB6-4600-9CBF-B9BD97CF5204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413A4206-9FB6-4600-9CBF-B9BD97CF5204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBAC7FD0-B470-4EEC-A117-711AF0ABC517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAC7FD0-B470-4EEC-A117-711AF0ABC517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAC7FD0-B470-4EEC-A117-711AF0ABC517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAC7FD0-B470-4EEC-A117-711AF0ABC517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBAC7FD0-B470-4EEC-A117-711AF0ABC517} = {C59D752C-AD9C-4DBF-BDBF-8211A39066D9}
+	EndGlobalSection
+EndGlobal

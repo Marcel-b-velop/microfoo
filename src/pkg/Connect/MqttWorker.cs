@@ -30,9 +30,6 @@ public class MqttWorker : BackgroundService
     public override async Task StopAsync(
         CancellationToken stoppingToken)
     {
-        foreach (var subscription in _subscriptions)
-            await _client.UnsubscribeAsync(subscription);
-
         await _client.StopAsync();
         _client.Dispose();
         _logger.LogInformation("Client stopped.");
@@ -45,7 +42,6 @@ public class MqttWorker : BackgroundService
         var message = new MqttApplicationMessageBuilder()
             .WithTopic(ApplicationTopic.Connect)
             .WithPayload(JsonSerializer.Serialize(application))
-            .WithRetainFlag()
             .Build();
         await _client.EnqueueAsync(message);
         // Wait until the queue is fully processed.
@@ -66,8 +62,6 @@ public class MqttWorker : BackgroundService
                 // var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<CreateMeasurementCommand>>();
                 var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
                 var applicationConfig = GetApplicationConfig(configuration);
-                _subscriptions = applicationConfig?.Subscriptions ??
-                                 throw new InvalidOperationException("No subscriptions found.");
                 var mqttFactory = new MqttFactory();
                 _client = mqttFactory.CreateManagedMqttClient();
                 _logger.LogInformation($"MQTT Server: {applicationConfig.Server}");
@@ -95,9 +89,6 @@ public class MqttWorker : BackgroundService
                     .Build();
                 await _client.StartAsync(managedMqttClientOptions);
 
-                foreach (var subscription in _subscriptions)
-                    await _client.SubscribeAsync(subscription);
-
                 _client.ApplicationMessageReceivedAsync += async e =>
                 {
                     var payload = Encoding.Default.GetString(e.ApplicationMessage.PayloadSegment);
@@ -110,15 +101,15 @@ public class MqttWorker : BackgroundService
 
                 _logger.LogInformation("The managed MQTT client is connected.");
 
-                await ApplyConnectAsync(configuration);
                 _logger.LogInformation("Client connected: {S}", _client.IsConnected.ToString());
                 _logger.LogInformation("Pending messages: {ClientPendingApplicationMessagesCount}",
                     _client.PendingApplicationMessagesCount);
+                await ApplyConnectAsync(configuration);
                 log = false;
             }
             catch (Exception e)
             {
-                _logger.LogError($"Fehler beim Starten des Workers. {e.StackTrace}", e);
+                _logger.LogError($"Fehler beim Starten des Workers. {e}", e);
                 await Task.Delay(3_000, stoppingToken);
             }
 

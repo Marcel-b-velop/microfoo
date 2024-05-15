@@ -1,0 +1,6 @@
+﻿services:
+  app1.bff:
+    image: app1.bff
+    build:
+      context: .
+      dockerfile: App1.Bff/Dockerfile

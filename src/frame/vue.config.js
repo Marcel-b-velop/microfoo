@@ -12,14 +12,12 @@ module.exports = defineConfig({
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
-    allowedHosts: [
-      'localhost',
-      'b-velop.com'
-    ]
+    allowedHosts: ['localhost', 'b-velop.com']
   },
 
-  chainWebpack: config => {
-    config.entry('app')
+  chainWebpack: (config) => {
+    config
+      .entry('app')
       .clear()
       .add('./src/main.ts')
       .end()
@@ -29,18 +27,17 @@ module.exports = defineConfig({
 
     config.optimization.delete('splitChunks').end()
 
-    config.plugin('LimitChunkCountPlugin')
+    config
+      .plugin('LimitChunkCountPlugin')
       .use(webpack.optimize.LimitChunkCountPlugin, [{ maxChunks: 1 }])
 
-    config.plugin('SystemJSPublicPathWebpackPlugin')
-      .tap(args => {
-        args[0].systemjsModuleName = 'b-velop-frame'
-        args[0].rootDirectoryLevel = 1
-        return args
-      })
+    config.plugin('SystemJSPublicPathWebpackPlugin').tap((args) => {
+      args[0].systemjsModuleName = 'b-velop-frame'
+      args[0].rootDirectoryLevel = 1
+      return args
+    })
 
-    config
-      .module
+    config.module
       .rule('ts')
       .parser({ system: true })
       .rule('scss')
@@ -56,5 +53,4 @@ module.exports = defineConfig({
       .end()
   },
   transpileDependencies: true
-}
-)
+})

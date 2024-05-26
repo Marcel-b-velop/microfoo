@@ -6,10 +6,10 @@
     <div class="sidebar">
       <ul>
         <li>
-          <a href="#" @click="navigate('/app1')">App1</a>
+          <a href="#" @click="spa.navigateToUrl('/app1')">App1</a>
         </li>
         <li>
-          <a href="#" @click="navigate('/app2')">App2</a>
+          <a href="#" @click="spa.navigateToUrl('/app2')">App2</a>
         </li>
       </ul>
     </div>
@@ -25,7 +25,7 @@ import * as spa from "single-spa";
 import { Store } from "infra";
 import { defineProps } from "vue";
 
-const props = defineProps<{ msg: string, store: Store }>();
+const props = defineProps<{ msg: string; store: Store }>();
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

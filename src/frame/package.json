@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
+    "linta": "npx eslint ./src --fix",
+    "lintb": "npx prettier --write ./src",
     "serve:standalone": "vue-cli-service serve --mode standalone"
   },
   "dependencies": {
@@ -18,6 +20,7 @@
     "vue": "^3.4.27"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.24.6",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",

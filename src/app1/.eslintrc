@@ -1,3 +1,4 @@
 {
-    "extends": "../infra/.eslintrc"
+  //    "extends": "../infra/.eslintrc",
+  extends: "@repo/eslint-config/next.js"
 }

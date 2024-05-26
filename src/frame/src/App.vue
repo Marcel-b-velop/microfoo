@@ -1,33 +1,32 @@
 <template>
-  <HelloWorld :msg="msg" :store="props.store"/>
+  <HelloWorld :msg="msg" :store="props.store" />
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import { defineProps, onMounted, ref } from 'vue'
-import { Store, State } from 'infra'
+import HelloWorld from "./components/HelloWorld.vue";
+import { defineProps, onMounted, ref } from "vue";
+import { Store, State } from "infra";
 
-const letNavigate = ref(false)
-const props = defineProps<{ store: Store }>()
-const msg = ref('Welcome to Your Vue.js + TypeScript App')
+const letNavigate = ref(false);
+const props = defineProps<{ store: Store }>();
+const msg = ref("Welcome to Your Vue.js + TypeScript App");
 
 const shouldNavigate = (sender: string) => {
-  console.info(sender)
-  return letNavigate.value
-}
+  console.info(sender);
+  return letNavigate.value;
+};
 
 onMounted(() => {
-  console.info('mounted')
-  const st = props.store
+  console.info("mounted");
+  const st = props.store;
   st.subscribe({
     next: (data: State) => {
-      console.info('data', data)
-      msg.value = data.message
-    }
-  })
-  st.next({ message: 'Hello from Vue', shouldNavigate, token: '1234' })
-})
+      console.info("data", data);
+      msg.value = data.message;
+    },
+  });
+  st.next({ message: "Hello from Vue", shouldNavigate, token: "1234" });
+});
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

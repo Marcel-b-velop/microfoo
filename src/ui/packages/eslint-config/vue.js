@@ -33,6 +33,7 @@ module.exports = {
         'semi': ['error', 'always'],
         "space-before-function-paren": ["error", "never"],
         'quotes': ['error', 'double'],
+        'vue/multi-word-component-names': 'off',
         'comma-dangle': ['error', 'always-multiline'],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'

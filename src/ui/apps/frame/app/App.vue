@@ -1,5 +1,6 @@
 <template>
   <HelloWorld :msg="msg" :store="props.store" />
+
 </template>
 
 <script setup lang="ts">

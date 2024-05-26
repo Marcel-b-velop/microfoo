@@ -1,8 +1,14 @@
 import { h, createApp } from "vue";
 import singleSpaVue from "single-spa-vue";
+import "primeicons/primeicons.css";
 
 import App from "./App.vue";
 import { createPinia } from "pinia";
+
+import PrimeVue from "primevue/config";
+import "primevue/resources/themes/aura-light-green/theme.css";
+import Toolbar from "primevue/toolbar";
+import Button from "primevue/button";
 
 const vueLifecycles = singleSpaVue({
   createApp,
@@ -35,6 +41,9 @@ const vueLifecycles = singleSpaVue({
   handleInstance(app) {
     const pinia = createPinia();
     app.use(pinia);
+    app.use(PrimeVue);
+    app.component("Button", Button);
+    app.component("Toolbar", Toolbar);
     console.info("Pinia store created");
   },
   replaceMode: false,

@@ -151,6 +151,15 @@ importers:
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
+      primeicons:
+        specifier: ^7.0.0
+        version: 7.0.0
+      primevue:
+        specifier: ^3.52.0
+        version: 3.52.0(vue@3.4.27(typescript@5.4.5))
+      single-spa:
+        specifier: ^6.0.1
+        version: 6.0.1
       single-spa-vue:
         specifier: ^2.1.0
         version: 2.5.1
@@ -200,6 +209,9 @@ importers:
       eslint-plugin-vue:
         specifier: ^8.0.3
         version: 8.7.1(eslint@7.32.0)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.6.2
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -3140,10 +3152,6 @@ packages:
     resolution: {integrity: sha512-kxpoMgrdtkXZ5h0SeraBS1iRntpTpQ3R8ussdb38+UAFnMGX5DDyJXePm+OCHOcoXvHDw7mc2erbJBpDnl7TPw==}
     engines: {node: '>=0.6'}
 
-  enhanced-resolve@5.15.0:
-    resolution: {integrity: sha512-LXYT42KJ7lpIKECr2mAXIaMldcNCh/7E0KBKOu4KSfkHmP+mZmSs+8V5gBAqisWBy0OO4W5Oyys0GO1Y8KtdKg==}
-    engines: {node: '>=10.13.0'}
-
   enhanced-resolve@5.16.1:
     resolution: {integrity: sha512-4U5pNsuDl0EhuZpq46M5xPslstkviJuhrdobaRDBk2Jy2KO37FDAJl4lb2KlNabxT0m4MTK2UHNrsAcphE8nyw==}
     engines: {node: '>=10.13.0'}
@@ -5496,6 +5504,14 @@ packages:
     peerDependencies:
       prettier: ^2.0.0
 
+  primeicons@7.0.0:
+    resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
+
+  primevue@3.52.0:
+    resolution: {integrity: sha512-HLOVP5YI0ArFKUhIyfZsWmTNMaBYNCBWC/3DYvdd/Po4LY5/WXf7yIYvArE2q/3OuwSXJXvjlR8UNQeJYRSQog==}
+    peerDependencies:
+      vue: ^3.0.0
+
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
 
@@ -5887,6 +5903,9 @@ packages:
 
   single-spa@5.9.5:
     resolution: {integrity: sha512-9SQdmsyz4HSP+3gs6PJzhkaMEg+6zTlu9oxIghnwUX3eq+ajq4ft5egl0iyR55LAmO/UwvU8NgIWs/ZyQMa6dw==}
+
+  single-spa@6.0.1:
+    resolution: {integrity: sha512-JsJSnjaeBJ+uZCqKwfI06AsaHlqfr2jvDqz+1we8tDxptYnDEi54C2M6W0XY2FLroro9Wnh3+ooEUEwcOileGg==}
 
   sirv@2.0.4:
     resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==}
@@ -10349,11 +10368,6 @@ snapshots:
       memory-fs: 0.2.0
       tapable: 0.1.10
 
-  enhanced-resolve@5.15.0:
-    dependencies:
-      graceful-fs: 4.2.11
-      tapable: 2.2.1
-
   enhanced-resolve@5.16.1:
     dependencies:
       graceful-fs: 4.2.11
@@ -13371,6 +13385,12 @@ snapshots:
       prettier: 2.8.8
       tslib: 2.6.2
 
+  primeicons@7.0.0: {}
+
+  primevue@3.52.0(vue@3.4.27(typescript@5.4.5)):
+    dependencies:
+      vue: 3.4.27(typescript@5.4.5)
+
   process-nextick-args@2.0.1: {}
 
   progress-webpack-plugin@1.0.16(webpack@5.91.0):
@@ -13856,6 +13876,8 @@ snapshots:
 
   single-spa@5.9.5: {}
 
+  single-spa@6.0.1: {}
+
   sirv@2.0.4:
     dependencies:
       '@polka/url': 1.0.0-next.25
@@ -14295,7 +14317,7 @@ snapshots:
   ts-loader@9.5.1(typescript@5.4.5)(webpack@5.91.0):
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.15.0
+      enhanced-resolve: 5.16.1
       micromatch: 4.0.5
       semver: 7.6.2
       source-map: 0.7.4

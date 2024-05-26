@@ -7,10 +7,11 @@ const shouldNavigate = getShouldNavigate();
 registerApplication({
   name: "@b-velop/frame",
   app: () => System.import<LifeCycles>("@b-velop/frame"),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   activeWhen: (location: Location) => true,
   customProps: {
-    payload: { store, shouldNavigate }
-  }
+    payload: { store, shouldNavigate },
+  },
 });
 
 store.subscribe((state: State) => {
@@ -21,7 +22,7 @@ store.subscribe((state: State) => {
 });
 
 start({
-  urlRerouteOnly: true
+  urlRerouteOnly: true,
 });
 
 registerApplication({
@@ -30,8 +31,8 @@ registerApplication({
   activeWhen: (location: Location) =>
     location.pathname.startsWith("/app1") || location.pathname === "/",
   customProps: {
-    payload: { store, shouldNavigate }
-  }
+    payload: { store, shouldNavigate },
+  },
 });
 
 registerApplication({
@@ -39,8 +40,8 @@ registerApplication({
   app: () => System.import<LifeCycles>("@b-velop/app2"),
   activeWhen: (location: Location) => location.pathname.startsWith("/app2"),
   customProps: {
-    payload: { store, shouldNavigate }
-  }
+    payload: { store, shouldNavigate },
+  },
 });
 
 setTimeout(() => {
@@ -51,6 +52,6 @@ setTimeout(() => {
     shouldNavigate: (sender: string) => {
       console.log("shouldNavigate called from host", sender);
       return true;
-    }
+    },
   });
 }, 5_000);

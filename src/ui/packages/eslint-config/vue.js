@@ -1,4 +1,4 @@
-const { resolve } = require("node:path");
+const {resolve} = require("node:path");
 
 const project = resolve(process.cwd(), "tsconfig.json");
 
@@ -30,9 +30,12 @@ module.exports = {
         "node_modules/",
     ],
     rules: {
-        'semi': ['error', 'never'],
+        'semi': ['error', 'always'],
+        "space-before-function-paren": ["error", "never"],
+        'quotes': ['error', 'double'],
+        'comma-dangle': ['error', 'always-multiline'],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
     },
-    overrides: [{ files: ["*.js?(x)", "*.ts?(x)"] }],
+    overrides: [{files: ["*.js?(x)", "*.ts?(x)"]}],
 };

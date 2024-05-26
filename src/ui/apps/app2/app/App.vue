@@ -1,11 +1,9 @@
-
 <template>
-  <HelloWorld msg="Application 2"/>
+  <HelloWorld msg="Application 2" />
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

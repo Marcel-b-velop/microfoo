@@ -6,6 +6,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "format": "prettier --write \"**/*.{ts,vue,md}\"",
     "serve:standalone": "vue-cli-service serve --mode standalone"
   },
   "dependencies": {

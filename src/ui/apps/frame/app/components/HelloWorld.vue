@@ -37,7 +37,7 @@
       <div class="sidebar">
         <ul>
           <li>
-            <a href="#" @click="spa.navigateToUrl('/app1')">App1</a>
+            <a href="#" @click="spa.navigateToUrl('/app-1')">App1</a>
           </li>
           <li>
             <a href="#" @click="spa.navigateToUrl('/app2')">App2</a>

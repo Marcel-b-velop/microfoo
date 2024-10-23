@@ -8,7 +8,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddHostApplication(this IServiceCollection services)
     {
-        services.AddScoped<ICommandHandler<ProcessMessageCommand>, ProcessMessageCommandHandler>();
+        services.AddScoped<ICommandHandler<ProcessMessageCommand>, ProcessMessageCommandHandler>()
+            .AddScoped<ICommandHandler<RegisterApplicationCommand>, RegisterApplicationCommandHandler>();
         return services;
     }
 }

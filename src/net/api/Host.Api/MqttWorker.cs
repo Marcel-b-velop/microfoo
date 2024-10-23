@@ -93,7 +93,7 @@ public class MqttWorker : BackgroundService
                         Payload = payload,
                         Topic = address
                     };
-                    await handler.Handle(cmd);
+                    await handler.Handle(cmd, stoppingToken);
                     Console.WriteLine("Topic: " + address);
                     Console.WriteLine("Value: " + payload);
                     // var command = new CreateMeasurementCommand(address, payload);

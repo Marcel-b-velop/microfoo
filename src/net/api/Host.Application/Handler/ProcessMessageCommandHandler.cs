@@ -4,20 +4,14 @@ using com.b_velop.microfe.Models;
 
 namespace com.b_velop.microfe.Handler;
 
-public class ProcessMessageCommandHandler : ICommandHandler<ProcessMessageCommand>
+public class ProcessMessageCommandHandler(IRegisterApplication registerApplication)
+    : ICommandHandler<ProcessMessageCommand>
 {
-    private readonly IRegisterApplication _registerApplication;
-
-    public ProcessMessageCommandHandler(IRegisterApplication registerApplication)
-    {
-        _registerApplication = registerApplication;
-    }
-
-    public Task Handle(ProcessMessageCommand command)
+    public Task Handle(ProcessMessageCommand command, CancellationToken cancellationToken)
     {
         return command.Topic switch
         {
-            "apphost/connect/application" => _registerApplication.Register(
+            "apphost/connect/application" => registerApplication.Register(
                 JsonSerializer.Deserialize<Application>(command.Payload)),
             _ => throw new InvalidOperationException("Invalid topic.")
         };

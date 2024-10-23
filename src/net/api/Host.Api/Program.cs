@@ -1,5 +1,6 @@
 using com.b_velop.microfe;
 using com.b_velop.microfe.Authorization;
+using com.b_velop.microfe.shared.Client;
 using Microsoft.OpenApi.Models;
 
 const string serviceName = "Host";
@@ -46,13 +47,14 @@ builder.Services
 
 builder.Services.AddRegisterAdapter();
 builder.Services.AddHostedService<MqttWorker>();
+builder.Services.AddHostedService<ApplicationHealthCheck>();
 
 var app = builder.Build();
 
 
 app.UseDeveloperExceptionPage();
 app.UseRouting();
-app.UseCors();
+app.UseCors(opt => opt.WithOrigins("http://localhost:9000").AllowAnyHeader().AllowAnyMethod());
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

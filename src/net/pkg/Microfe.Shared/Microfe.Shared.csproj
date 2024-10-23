@@ -7,4 +7,8 @@
         <RootNamespace>com.b_velop.microfe.shared</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+
 </Project>

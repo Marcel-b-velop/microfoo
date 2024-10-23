@@ -28,6 +28,9 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+h1 {
+  color: #42b983;
+}
 a {
   color: #42b983;
 }

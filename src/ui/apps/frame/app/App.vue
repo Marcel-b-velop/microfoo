@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
-import { defineProps, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { Store, State } from "@repo/infra/src";
 
 const letNavigate = ref(false);

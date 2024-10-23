@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { State, Store } from "@repo/infra/src";
 import HelloWorld from "./components/HelloWorld.vue";
-import { onMounted, ref, defineProps } from "vue";
+import { onMounted, ref } from "vue";
 
 const props = defineProps<{ store: Store }>();
 const letNavigate = ref(false);

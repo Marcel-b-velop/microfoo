@@ -41,6 +41,15 @@
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
+    <script type="systemjs-importmap" src="//localhost:8000/api/Host/importmap"></script>
+    <script type="systemjs-importmap">
+        {
+          "imports": {
+            "@b-velop/root-config": "//localhost:9000/b-velop-root-config.js",
+            "@b-velop/frame": "//localhost:9077/b-velop-frame.js"
+          }
+        }
+    </script>
   <% if (isLocal) { %>
   <script type="systemjs-importmap">
     {

@@ -55,7 +55,6 @@
 <script setup lang="ts">
 import * as spa from "single-spa";
 import { Store } from "@repo/infra/src";
-import { defineProps } from "vue";
 
 const props = defineProps<{ msg: string; store: Store }>();
 </script>

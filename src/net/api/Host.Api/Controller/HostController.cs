@@ -78,6 +78,9 @@ public class HostController : ControllerBase
         {
             Imports = new Dictionary<string, string>()
         };
+        // r.Imports.TryAdd("@b-velop/root-config", "//localhost:9000/b-velop-root-config.js");
+        // r.Imports.TryAdd("@b-velop/frame", "//localhost:9077/b-velop-frame.js");
+        r.Imports.TryAdd("@b-velop/app2", "//localhost:9011/b-velop-app2.js");
         foreach (var (key, value) in result)
         {
             r.Imports.Add($"@{value.Prefix}/{key}", $"//{value.Server}:{value.Port}/{value.Prefix}-{value.Name}.js");

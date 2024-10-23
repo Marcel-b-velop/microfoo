@@ -7,6 +7,12 @@ namespace com.b_velop.microfe.Controller;
 [Route("api/[controller]")]
 public class HostController : ControllerBase
 {
+    [HttpPost]
+    public async Task<IActionResult> RegisterApplication(ApplicationConfiguration applicationConfiguration,
+        CancellationToken cancellationToken)
+    {
+        
+    }
     [HttpGet]
     public async Task<IActionResult> GetApplication(
         ICacheService service,

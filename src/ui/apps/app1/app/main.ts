@@ -1,5 +1,9 @@
 import { h, createApp } from "vue";
 import singleSpaVue from "single-spa-vue";
+import PrimeVue from "primevue/config";
+import Button from "primevue/button";
+import "primeicons/primeicons.css";
+import Aura from "@primevue/themes/aura";
 
 import App from "./App.vue";
 
@@ -30,6 +34,14 @@ const vueLifecycles = singleSpaVue({
         */
       });
     },
+  },
+  handleInstance(app) {
+    app.use(PrimeVue, {
+      theme: {
+        preset: Aura,
+      },
+    });
+    app.component("Button", Button);
   },
   replaceMode: false,
 });

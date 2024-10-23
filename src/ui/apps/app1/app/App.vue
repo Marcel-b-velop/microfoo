@@ -2,6 +2,7 @@
   <HelloWorld msg="Welcome to App1" />
   <label>{{ letNavigate }}</label>
   <button @click="letNavigate = !letNavigate">Toggle Navigation</button>
+  <Lala></Lala>
 </template>
 
 <script setup lang="ts">

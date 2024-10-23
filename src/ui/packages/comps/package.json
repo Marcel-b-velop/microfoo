@@ -1,0 +1,22 @@
+{
+  "name": "@repo/comps",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./Lala": "./src/Lala.vue"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "generate:component": "turbo gen vue-component"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@turbo/gen": "^1.12.4",
+    "@types/node": "^20.11.24",
+    "@types/eslint": "^8.56.5",
+    "eslint": "^8.57.0",
+    "vue": "^3.4.27",
+    "typescript": "^5.3.3"
+  }
+}

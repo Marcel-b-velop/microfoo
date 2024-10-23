@@ -10,6 +10,7 @@
     "serve:standalone": "vue-cli-service serve --mode standalone"
   },
   "dependencies": {
+    "@repo/comps": "workspace:*",
     "@repo/infra": "workspace:*",
     "single-spa-vue": "^2.1.0",
     "vue": "^3.2.13"
